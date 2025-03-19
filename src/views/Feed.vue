@@ -18,9 +18,9 @@ import { getFollowsConnectedRelaysMap, getUserFollows } from '@/utils/network';
 import { loadAndInjectDataToPosts, listRootEvents } from '@/utils/utils';
 import { EVENT_KIND } from '@/nostr';
 
-defineProps<{
-  eventsLog: LogContentPart[][];
-}>();
+// defineProps<{
+//   eventsLog: LogContentPart[][];
+// }>();
 
 const relayStore = useRelay();
 const feedStore = useFeed();

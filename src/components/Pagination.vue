@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineEmits, watch } from 'vue';
+import { watch } from 'vue';
 import { useRoute } from 'vue-router';
 
 defineProps<{

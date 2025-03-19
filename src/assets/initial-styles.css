@@ -1,0 +1,164 @@
+/* base: 14pt, smaller: 11pt, small: 10pt */
+html {
+  font-size: 62.5%; /* Make the root font-size 10px by default: 1.8rem would become 18px. */
+}
+body {
+  font-size: 1.9rem; /* 18px font size */
+  line-height: 1.618; /* Golden ratio for line-height */
+  max-width: 36em; /* 684px */
+  margin: 5rem auto 0 auto;
+  padding-bottom: 20rem;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+nav {
+  align-items: center;
+  display: flex;
+}
+.breadcrumbs {
+  flex-grow: 1;
+  font-size: 1.15em;
+}
+nav .author-photo-img-wrap {
+  flex-shrink: 1;
+}
+nav .author-photo-img {
+  border-radius: 10rem;
+  width: 6rem;
+  height: 6rem;
+  max-width: 6rem;
+  display: inline-flex;
+}
+footer {
+  font-size: 10pt;
+  margin-top: 8rem;
+}
+article h2 {
+  margin-top: 4rem;
+}
+article img {
+  max-width: 100%;
+}
+h2 {
+  /* font-size: 1.5em; */
+  font-weight: 500;
+}
+ul,
+ol {
+  padding-inline-start: 30px;
+}
+ol > li,
+ul > li {
+  /* padding: 0.2rem 0; */
+}
+table {
+  border-collapse: collapse;
+  font-size: 11pt;
+  width: 100%;
+}
+th {
+  text-align: left;
+}
+tr {
+  border-bottom: 1px solid;
+}
+pre {
+  font-size: 11pt;
+  overflow: scroll;
+  padding: 1rem;
+}
+@media (max-width: 30em) {
+  body {
+    padding: 0 2rem;
+  }
+}
+
+/* All color-related stuff. Some colors from flexoki are utilized. */
+/*! flexoki | MIT License | Copyright (c) 2023 Steph Ango https://github.com/kepano/flexoki */
+body {
+  background-color: #fffcf0;
+  color: #100f0f;
+}
+a,
+.breadcrumbs a:visited {
+  color: #100f0f; /* f-black */
+  /* text-decoration-skip: none; */
+  text-underline-offset: 0.4rem;
+}
+a:visited {
+  color: #797272;
+}
+.post-date {
+  display: inline-block;
+  width: 33pt;
+}
+.dimmed,
+.dimmed a,
+.dimmed a:visited,
+ol > li::marker,
+ul > li::marker,
+blockquote {
+  color: #575653; /* f-700 */
+}
+blockquote {
+  quotes: '“' '”' '“' '”';
+  margin-left: 0.5em;
+  font-style: italic;
+}
+blockquote::before {
+  content: open-quote;
+}
+blockquote::after {
+  content: close-quote;
+}
+blockquote > p {
+  display: inline;
+}
+tr {
+  border-bottom-color: #cecdc3; /* f-200 */
+}
+
+/* highlight.css stuff */
+pre {
+  background-color: #f2f0e5; /* f-50 */
+  color: #343331; /* f-850 */
+}
+.highlight .c1 {
+  color: #878580; /* f-500, comment */
+}
+.highlight .kd {
+  color: #205ea6; /* f-blue-600, keyword */
+}
+.highlight .k {
+  color: #66800b; /* f-green-600, constant */
+}
+.highlight .mi {
+  color: #24837b; /* f-cyan-600, number */
+}
+/* end of custom css for paulmillr.com */
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #100f0f; /* f-black */
+    color: #cecdc3; /* f-200 */
+  }
+  a,
+  .breadcrumbs a:visited {
+    color: #cecdc3; /* f-200 */
+  }
+  a:visited {
+    color: #84847e;
+  }
+  .dimmed,
+  .dimmed a,
+  .dimmed a:visited,
+  ol > li::marker,
+  ul > li::marker,
+  blockquote {
+    color: #a09d98;
+  }
+  pre {
+    background-color: #222;
+    color: #f2f0e5;
+  }
+}

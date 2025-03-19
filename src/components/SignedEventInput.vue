@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, defineEmits } from 'vue';
+import { ref } from 'vue';
 import { useRelay } from '@/stores/Relay';
 import { useFeed } from '@/stores/Feed';
 import Textarea from '@/components/Textarea.vue';

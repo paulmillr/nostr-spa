@@ -2,6 +2,7 @@
   "name": "nostr-spa",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -13,7 +14,7 @@
   "dependencies": {
     "@noble/hashes": "1.7.1",
     "bootstrap-icons": "1.11.3",
-    "nostr-tools": "2.10.4",
+    "nostr-tools": "2.7.1",
     "pinia": "2.2.6",
     "vue": "3.5.12",
     "vue-router": "4.4.5"

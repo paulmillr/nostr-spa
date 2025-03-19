@@ -5,7 +5,7 @@ import RawData from './RawData.vue';
 import type { Author, EventExtended } from './../types';
 import CheckSquareIcon from './../icons/CheckSquareIcon.vue';
 import InvalidSignatureIcon from './../icons/InvalidSignatureIcon.vue';
-import { formatedDate } from '../utils/utils';
+import { formatedDateYear } from '../utils/utils';
 
 const props = defineProps<{
   event: EventExtended;
@@ -77,10 +77,10 @@ const handleToggleRawData = () => {
       </div>
 
       <div>
-        <div class="header-col"><b>Created: </b></div>
+        <div class="header-col"><b>Updated: </b></div>
         <div class="content-col_code">
           <code class="event__code">
-            {{ formatedDate(created_at) }}
+            {{ formatedDateYear(created_at) }}
           </code>
         </div>
       </div>

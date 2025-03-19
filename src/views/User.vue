@@ -668,7 +668,6 @@ const showDisplayName = (author: Author) => {
   justify-content: space-between;
   align-items: baseline;
   font-weight: bold;
-  font-size: 1.3rem;
   margin-bottom: 5px;
 }
 
@@ -679,7 +678,7 @@ const showDisplayName = (author: Author) => {
 }
 
 .user__name {
-  font-size: 1.05rem;
+  font-size: 17px;
 }
 
 .user__desc {

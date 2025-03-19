@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps, defineEmits } from 'vue';
 import { useNsec } from '@/stores/Nsec';
 import { useRelay } from '@/stores/Relay';
 import { useOwnProfile } from '@/stores/OwnProfile';

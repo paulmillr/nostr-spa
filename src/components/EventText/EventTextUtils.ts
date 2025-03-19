@@ -1,4 +1,4 @@
-// import cloneDeep from 'lodash/cloneDeep';
+import { toRaw } from 'vue';
 import { POST_LINES_COUNT, POST_TEXT_LENGTH } from '@/app';
 import type { ContentPart, EventExtended } from '@/types';
 import { cutTextByLengthAndLine, getNpub, getTextLines } from '@/utils/utils';
@@ -32,7 +32,9 @@ export const cutPartText = (rawText: string, parts: ContentPart[]) => {
 };
 
 export const getSortedReferences = (event: EventExtended) => {
-  const references = structuredClone(event.references);
+  const rawReferences = toRaw(event.references);
+  const references = structuredClone(rawReferences);
+
   const { content } = event;
 
   if (!references) return [];

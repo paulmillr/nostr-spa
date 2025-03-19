@@ -11,7 +11,6 @@ import {
 } from 'nostr-tools';
 import { EVENT_KIND } from '../nostr';
 import type { Author, EventExtended, Nip65RelaysUrls } from '../types';
-// import truncate from 'lodash/truncate'
 
 export const markNotesAsRoot = (posts: EventExtended[]) => {
   posts.forEach((post) => (post.isRoot = true));
@@ -335,12 +334,21 @@ export const publishEventToRelays = async (relays: string[], pool: any, event: E
 };
 
 export const formatedDate = (date: number) => {
-  return new Date(date * 1000).toLocaleString('default', {
-    day: 'numeric',
-    month: 'short',
-    hour: 'numeric',
-    minute: 'numeric',
+  const currentYear = new Date().toLocaleString('default', {
+    year: 'numeric',
   });
+  const givenYear = new Date(date * 1000).toLocaleString('default', {
+    year: 'numeric',
+  });
+  if (currentYear === givenYear) {
+    return new Date(date * 1000).toLocaleString('default', {
+      day: 'numeric',
+      month: 'short',
+      hour: 'numeric',
+      minute: 'numeric',
+    });
+  }
+  return formatedDateYear(date);
 };
 
 export const formatedDateYear = (date: number) => {
@@ -627,10 +635,6 @@ export const cutTextByLength = (text: string, length: number) => {
     return text;
   }
   return text.slice(0, length) + '...';
-  // return truncate(text, {
-  //   length: length,
-  //   separator: /,? +/,
-  // })
 };
 
 export const cutTextByLengthAndLine = (text: string, length: number, lines: number) => {

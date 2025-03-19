@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type Ref, ref, onUpdated, defineProps, computed, nextTick } from 'vue';
+import { type Ref, ref, onUpdated, computed, nextTick } from 'vue';
 import type { Event } from 'nostr-tools';
 import type { Chat } from '@/types';
 import ChatMessagesList from '@/components/ChatMessagesList.vue';

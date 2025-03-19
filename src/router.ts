@@ -86,6 +86,7 @@ const routes = [
   },
   {
     path: '/settings',
+    name: 'Settings',
     components: {
       default: Settings,
       Header: Header,

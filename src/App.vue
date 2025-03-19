@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import type { LogContentPart } from './types';
+// import type { LogContentPart } from './types';
 import { useNsec } from '@/stores/Nsec';
 
 const router = useRouter();
@@ -12,7 +12,7 @@ nsecStore.setRememberMe(isRemembered);
 const initialNsec = isRemembered ? localStorage.getItem('privkey') : '';
 nsecStore.updateNsec(initialNsec || '');
 
-const eventsLog = ref<LogContentPart[][]>([]);
+// const eventsLog = ref<LogContentPart[][]>([]);
 
 // old loggin logic
 // const logStr = (msg: string) => {
@@ -36,5 +36,6 @@ const clearAppState = async (clearUserData: boolean = false) => {
 
 <template>
   <router-view @clearAppState="clearAppState" name="Header"></router-view>
-  <router-view @clearAppState="clearAppState" :eventsLog="eventsLog"></router-view>
+  <router-view @clearAppState="clearAppState" v-if="$route.name === 'Settings'"></router-view>
+  <router-view v-if="$route.name !== 'Settings'"></router-view>
 </template>
