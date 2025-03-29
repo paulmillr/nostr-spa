@@ -41,7 +41,7 @@ jobs:
           repository: 'paulmillr/apps'
           token: ${{ secrets.GH_PAGES_APPS_PAT }}
           path: apps-pages
-      - run: mv dist apps-pages/nostr
+      - run: mv nostr apps-pages
       - run: |
           cd apps-pages
           git config user.name "github-actions[bot]"
