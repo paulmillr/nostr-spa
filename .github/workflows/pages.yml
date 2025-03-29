@@ -4,13 +4,11 @@ on:
     branches: ['main']
 permissions:
   contents: read
-  pages: write
-  id-token: write
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Use Node.js v22
         uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4
         with:
@@ -19,11 +17,7 @@ jobs:
           node-version: 22
       - run: npm install
       - run: npm run build
-      # - run: tar -cvzf built.tar.gz dist
-      # - uses: actions/attest-build-provenance@bd77c077858b8d561b7a36cbe48ef4cc642ca39d # v2.2.2
-      #   with:
-      #     subject-path: built.tar.gz
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: built
           path: dist
@@ -31,21 +25,23 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@95815c38cf2ff2164869cbab79da8d1f422bc89e # v4.2.1
         with:
           name: built
           path: nostr
       - run: ls -la
-      - uses: actions/checkout@v4
+      - name: Clone repository which hosts pages
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           repository: 'paulmillr/apps'
           token: ${{ secrets.GH_PAGES_APPS_PAT }}
           path: apps-pages
-      - run: mv nostr apps-pages
+      - name: Add files to repositorory, remove previous build
+        run: rm -rf apps-pages/nostr; mv nostr apps-pages
       - run: |
           cd apps-pages
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -m "deployed"
+          git commit -m "deployed nostr"
           git push
