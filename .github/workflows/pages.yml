@@ -9,12 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - name: Use Node.js v22
+      - name: Use Node.js
         uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4
         with:
           registry-url: 'https://registry.npmjs.org'
-          cache: npm
-          node-version: 22
+          node-version: 22.13.0
       - run: npm install
       - run: npm run build
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
@@ -29,7 +28,6 @@ jobs:
         with:
           name: built
           path: nostr
-      - run: ls -la
       - name: Clone repository which hosts pages
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
