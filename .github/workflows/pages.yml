@@ -38,20 +38,20 @@ jobs:
           path: apps-pages
       - name: Add files to repositorory, remove previous build
         run: |
-        echo 1
-        ls -la .
-        ls -la apps-pages
-        rm -rf apps-pages/nostr
-        echo 2
-        ls -la .
-        ls -la apps-pages
-        mv nostr apps-pages
-        echo 3
-        ls -la .
-        ls -la apps-pages
-        echo 4
-        cd apps-pages
-        git status
+          echo 1
+          ls -la .
+          ls -la apps-pages
+          rm -rf apps-pages/nostr
+          echo 2
+          ls -la .
+          ls -la apps-pages
+          mv nostr apps-pages
+          echo 3
+          ls -la .
+          ls -la apps-pages
+          echo 4
+          cd apps-pages
+          git status
       - run: |
           cd apps-pages
           git config user.name "github-actions[bot]"
