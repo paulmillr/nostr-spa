@@ -20,9 +20,9 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: tar -cvzf built.tar.gz dist
-      - uses: actions/attest-build-provenance@bd77c077858b8d561b7a36cbe48ef4cc642ca39d # v2.2.2
-        with:
-          subject-path: built.tar.gz
+      # - uses: actions/attest-build-provenance@bd77c077858b8d561b7a36cbe48ef4cc642ca39d # v2.2.2
+      #   with:
+      #     subject-path: built.tar.gz
       - uses: actions/upload-artifact@v4
         with:
           path: built.tar.gz
