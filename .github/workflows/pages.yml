@@ -37,25 +37,12 @@ jobs:
           token: ${{ secrets.GH_PAGES_APPS_PAT }}
           path: apps-pages
       - name: Add files to repositorory, remove previous build
-        run: |
-          echo 1
-          ls -la .
-          ls -la apps-pages
-          rm -rf apps-pages/nostr
-          echo 2
-          ls -la .
-          ls -la apps-pages
-          mv nostr apps-pages
-          echo 3
-          ls -la .
-          ls -la apps-pages
-          echo 4
-          cd apps-pages
-          git status
+        run: rm -rf apps-pages/nostr; mv nostr apps-pages
       - run: |
           cd apps-pages
+          [[ -n "$(git diff --name-only)" ]] || exit
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .
+          git add -A
           git commit -m "deployed nostr"
           git push
