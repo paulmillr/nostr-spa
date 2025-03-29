@@ -40,7 +40,7 @@ jobs:
         run: rm -rf apps-pages/nostr; mv nostr apps-pages
       - run: |
           cd apps-pages
-          [[ -n "$(git diff --name-only)" ]] || exit
+          [[ -n "$(git diff --name-only)" ]] || exit 0
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
