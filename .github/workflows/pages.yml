@@ -31,7 +31,7 @@ jobs:
     needs: build
     steps:
       - uses: actions/download-artifact@v4
-      - run: tar -xf built.tar.gz
+      - run: tar -xf artifact
       - uses: actions/checkout@v4
         with:
           repository: 'paulmillr/apps'
