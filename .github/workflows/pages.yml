@@ -19,14 +19,14 @@ jobs:
           node-version: 22
       - run: npm install
       - run: npm run build
-      - run: tar -cvzf built.tar.gz dist
+      # - run: tar -cvzf built.tar.gz dist
       # - uses: actions/attest-build-provenance@bd77c077858b8d561b7a36cbe48ef4cc642ca39d # v2.2.2
       #   with:
       #     subject-path: built.tar.gz
       - uses: actions/upload-artifact@v4
         with:
           name: built
-          path: built.tar.gz
+          path: dist
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -34,7 +34,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: built
-          path: built.tar.gz
+          # path: built.tar.gz
       - run: ls -la; tar -xf built.tar.gz
       - uses: actions/checkout@v4
         with:
