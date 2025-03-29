@@ -19,25 +19,25 @@ jobs:
           node-version: 22
       - run: npm install
       - run: npm run build
-      - run: tar -cfz nostr.tar.gz dist
+      - run: tar -cvzf built.tar.gz dist
       - uses: actions/attest-build-provenance@bd77c077858b8d561b7a36cbe48ef4cc642ca39d # v2.2.2
         with:
-          subject-path: nostr.tar.gz
+          subject-path: built.tar.gz
       - uses: actions/upload-artifact@v4
         with:
-          path: nostr.tar.gz
+          path: built.tar.gz
   deploy:
     runs-on: ubuntu-latest
     needs: build
     steps:
       - uses: actions/download-artifact@v4
-      - run: tar -xf nostr.tar.gz && mv dist nostr
+      - run: tar -xf built.tar.gz
       - uses: actions/checkout@v4
         with:
           repository: 'paulmillr/apps'
           token: ${{ secrets.GH_PAGES_APPS_PAT }}
           path: apps-pages
-      - run: mv nostr apps-pages
+      - run: mv dist apps-pages/nostr
       - run: |
           cd apps-pages
           git config user.name "github-actions[bot]"
