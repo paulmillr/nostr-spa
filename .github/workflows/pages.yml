@@ -1,4 +1,4 @@
-name: Deploy to GitHub pages
+name: Deploy to GitHub Pages using custom repository
 on:
   push:
     branches: ['main']
@@ -37,10 +37,10 @@ jobs:
       - name: Add files to repositorory, remove previous build
         run: rm -rf apps-pages/nostr; mv nostr apps-pages
       - run: |
-          cd apps-pages
-          [[ -n "$(git diff --name-only)" ]] || exit 0
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cd apps-pages
           git add -A
+          [[ -n "$(git diff --name-only)" ]] || exit 0
           git commit -m "deployed nostr"
           git push
