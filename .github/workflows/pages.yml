@@ -35,7 +35,7 @@ jobs:
         with:
           name: built
           path: built.tar.gz
-      - run: tar -xf built.tar.gz
+      - run: ls -la; tar -xf built.tar.gz
       - uses: actions/checkout@v4
         with:
           repository: 'paulmillr/apps'
